@@ -31,13 +31,29 @@ class HomePage extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        key: const Key('increment_floatingActionButton'),
-        // The read method is a utility to read a provider without listening to it
-        onPressed: () => ref.read(counterProvider.state).state++,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton(
+              key: const Key('increment_floatingActionButton'),
+              // The read method is a utility to read a provider without listening to it
+              onPressed: () => ref.read(counterProvider.state).state++,
+              tooltip: 'Increment',
+              child: const Icon(Icons.plus_one),
+            ),
+            FloatingActionButton(
+              key: const Key('decrement_floatingActionButton'),
+              // The read method is a utility to read a provider without listening to it
+              onPressed: () => ref.read(counterProvider.state).state--,
+              tooltip: 'Decrement',
+              child: const Icon(Icons.exposure_minus_1),
+            ),
+          ],
+        ),
+      )
+
     );
   }
 }
